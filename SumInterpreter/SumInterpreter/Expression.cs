@@ -84,7 +84,7 @@ namespace SumInterpreter
             }
 
             resultTerms.AddRange(terms);
-            return resultTerms.OrderBy(t => (0 - t.Power, 0 - t.Variable.Length, t.Variable)).ToArray();
+            return resultTerms.OrderBy(t => (0 - t.Power, t.Variable == null ? int.MaxValue : 0 - t.Variable.Length, t.Variable)).ToArray();
         }
     }
 }

@@ -14,14 +14,9 @@ namespace SumInterpreter.Term
 
         public TermInterpreter()
         {
-            RegexText = $@"^(?<multiplier>\d+(\{decimalSeparator}\d+)?)?((?<variable>[a-z]+)(\^(?<power>\d+))?)?$";
-            _regex = new Regex(RegexText, RegexOptions.Compiled);
+            _regex = new Regex($@"^(?<multiplier>\d+(\{decimalSeparator}\d+)?)?((?<variable>[a-z]+)(\^(?<power>\d+))?)?$",
+                RegexOptions.Compiled);
         }
-
-        /// <summary>
-        /// Текст регулярного выражения, для определения слагаемого.
-        /// </summary>
-        public string RegexText { get; }
 
         /// <summary>
         /// Интерпретация текста слагаемого в структуру.

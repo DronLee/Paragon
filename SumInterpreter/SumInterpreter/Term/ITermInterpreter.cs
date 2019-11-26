@@ -6,11 +6,6 @@
     public interface ITermInterpreter
     {
         /// <summary>
-        /// Текст регулярного выражения, для определения слагаемого.
-        /// </summary>
-        string RegexText { get; }
-
-        /// <summary>
         /// Интерпретация текста слагаемого в структуру.
         /// </summary>
         /// <param name="termText">Текст слагаемого.</param>

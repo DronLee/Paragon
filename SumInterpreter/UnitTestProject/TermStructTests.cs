@@ -21,18 +21,5 @@ namespace UnitTestProject
             Assert.Equal(expectedVariable, result.Variable);
             Assert.Equal(expectedPower, result.Power);
         }
-
-        [Theory]
-        [InlineData(1, "x", 1, "+ x")]
-        [InlineData(-1, "x", 1, "- x")]
-        [InlineData(1, "xy", 2, "+ xy^2")]
-        [InlineData(-3, null, 1, "- 3")]
-        public void ToStringTest(decimal multiplier, string variable, int power, string expected)
-        {
-            var term = new TermStruct { Multiplier = multiplier, Power = power, Variable = variable };
-            var result = term.ToString();
-
-            Assert.Equal(expected, result);
-        }
     }
 }

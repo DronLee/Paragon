@@ -22,6 +22,7 @@ namespace UnitTestProject
         [InlineData("2xy", 2, "xy", 1)]
         [InlineData("xy^4", 1, "xy", 4)]
         [InlineData("3y^2", 3, "y", 2)]
+        [InlineData("-2y", -2, "y", 1)]
         public void Interpret(string termText, decimal expectedMultiplier, string expectedVariable, int expectedPower)
         {
             var termInterpreter = new TermInterpreter();

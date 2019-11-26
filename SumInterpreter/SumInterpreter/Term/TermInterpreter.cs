@@ -14,7 +14,7 @@ namespace SumInterpreter.Term
 
         public TermInterpreter()
         {
-            _regex = new Regex($@"^(?<multiplier>\d+(\{decimalSeparator}\d+)?)?((?<variable>[a-z]+)(\^(?<power>\d+))?)?$",
+            _regex = new Regex($@"^(?<multiplier>\-?\d+(\{decimalSeparator}\d+)?)?((?<variable>[a-z]+)(\^(?<power>\d+))?)?$",
                 RegexOptions.Compiled);
         }
 

@@ -1,5 +1,6 @@
 ﻿using SumInterpreter.Term;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace SumInterpreter
 {
@@ -8,15 +9,16 @@ namespace SumInterpreter
     /// </summary>
     public class SumExpressionInterpreter : IExpressionInterpreter
     {
-        private const char _termSeparator = '+';
         private const char _partSeparator = '=';
         private const string _space = " ";
 
         private readonly ITermInterpreter _termInterpreter;
+        private readonly Regex _termsRegex; 
 
         public SumExpressionInterpreter(ITermInterpreter termInterpreter)
         {
             _termInterpreter = termInterpreter;
+            _termsRegex = new Regex(@"(?<minus>\-[^\+\-]+)|(?<plus>[^\+\-]+)", RegexOptions.Compiled);
         }
 
         /// <summary>
@@ -48,15 +50,15 @@ namespace SumInterpreter
                 errors.Add($"Отсутствуют слагаемые {sideName}.");
             else
             {
-                var terms = expressionPart.Split(_termSeparator);
-                for (int i = 0; i < terms.Length; i++)
+                var termMatches = _termsRegex.Matches(expressionPart);
+                for (int i = 0; i < termMatches.Count; i++)
                     try
                     {
-                        result.Add(_termInterpreter.Interpret(terms[i]));
+                        result.Add(_termInterpreter.Interpret(termMatches[i].Value));
                     }
                     catch (IncorrectTermException)
                     {
-                        errors.Add($"Слагаемое номер {i} \"{terms[i]}\" {sideName} имеет некорректный вид.");
+                        errors.Add($"Слагаемое номер {i} \"{termMatches[i].Value}\" {sideName} имеет некорректный вид.");
                     }
             }
             return result.ToArray();

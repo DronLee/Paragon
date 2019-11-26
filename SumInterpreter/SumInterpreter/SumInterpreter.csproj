@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Expression.cs" />
     <Compile Include="IExpression.cs" />
     <Compile Include="IExpressionInterpreter.cs" />
     <Compile Include="IncorrectExpressionException.cs" />

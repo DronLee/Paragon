@@ -10,12 +10,12 @@ namespace SumInterpreter
         /// <summary>
         /// Левая часть выражения (да знака равно).
         /// </summary>
-        TermStruct[] LeftPart { get; }
+        TermStruct[] LeftPart { get; set; }
 
         /// <summary>
         /// Правая часть выражения (после знака равно).
         /// </summary>
-        TermStruct[] RightPart { get; }
+        TermStruct[] RightPart { get; set; }
 
         /// <summary>
         /// Нормализация выражения и получение результата в виде строки. 

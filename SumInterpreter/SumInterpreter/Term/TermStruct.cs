@@ -19,5 +19,14 @@
         /// Степень.
         /// </summary>
         public int Power;
+
+        /// <summary>
+        /// Возвращает слагаемое с противоположным знаком.
+        /// </summary>
+        /// <returns>Слагаемое с противоположным знаком.</returns>
+        public TermStruct Minus()
+        {
+            return new TermStruct { Multiplier = -Multiplier, Power = Power, Variable = Variable };
+        }
     }
 }

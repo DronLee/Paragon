@@ -1,4 +1,5 @@
 ﻿using SumInterpreter;
+using SumInterpreter.Term;
 using Xunit;
 
 namespace UnitTestProject
@@ -18,7 +19,7 @@ namespace UnitTestProject
         [InlineData("  1 = 12+x +  y", 1, 3)]
         public void Interpret(string expressionText, byte leftTermCount, byte rightTermCount)
         {
-            var sumExpressionInterpreter = new SumExpressionInterpreter();
+            var sumExpressionInterpreter = new SumExpressionInterpreter(new TestTermInterpreter());
             var result = sumExpressionInterpreter.Interpret(expressionText);
 
             Assert.Equal(leftTermCount, result.LeftPart.Length);
@@ -34,11 +35,21 @@ namespace UnitTestProject
         [InlineData("x +1")]
         [InlineData("x+y")]
         [InlineData(" = ")]
+        [InlineData(" = 1")]
+        [InlineData("3=")]
         public void Interpret_IncorrectExpression(string expressionText)
         {
-            var sumExpressionInterpreter = new SumExpressionInterpreter();
+            var sumExpressionInterpreter = new SumExpressionInterpreter(new TestTermInterpreter());
 
             Assert.Throws<IncorrectExpressionException>(() => sumExpressionInterpreter.Interpret(expressionText));
+        }
+
+        private class TestTermInterpreter : ITermInterpreter
+        {
+            public TermStruct Interpret(string termText)
+            {
+                return new TermStruct();
+            }
         }
     }
 }

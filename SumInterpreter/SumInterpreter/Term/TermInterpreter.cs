@@ -28,7 +28,7 @@ namespace SumInterpreter.Term
         /// </summary>
         /// <param name="termText">Текст слагаемого.</param>
         /// <returns>Полученная из текста структура.</returns>
-        public Term Interpret(string termText)
+        public TermStruct Interpret(string termText)
         {
             var match = _regex.Match(termText);
             if (!match.Success)
@@ -38,7 +38,7 @@ namespace SumInterpreter.Term
             var variableGroup = match.Groups["variable"];
             var powerGroup = match.Groups["power"];
 
-            return new Term
+            return new TermStruct
             {
                 Multiplier = multiplierGroup.Success ? decimal.Parse(
                     multiplierGroup.Value.Replace(decimalSeparator, CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator)) : 1,

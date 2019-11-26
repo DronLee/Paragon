@@ -3,7 +3,7 @@
     /// <summary>
     /// Структура слагаемого.
     /// </summary>
-    public struct Term
+    public struct TermStruct
     {
         /// <summary>
         /// Множитель.

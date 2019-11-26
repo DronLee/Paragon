@@ -15,6 +15,6 @@
         /// </summary>
         /// <param name="termText">Текст слагаемого.</param>
         /// <returns>Полученная из текста структура.</returns>
-        Term Interpret(string termText);
+        TermStruct Interpret(string termText);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace SumInterpreter
+﻿namespace SumInterpreter.Term
 {
     /// <summary>
     /// Структура слагаемого.

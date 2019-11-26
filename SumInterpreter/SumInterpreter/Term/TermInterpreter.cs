@@ -1,20 +1,26 @@
-﻿namespace SumInterpreter
+﻿using System;
+
+namespace SumInterpreter.Term
 {
     /// <summary>
-    /// Интерфейс интерпретатора слагаемого.
+    /// Интерпретатор слагаемого.
     /// </summary>
-    public interface ITermInterpreter
+    public class TermInterpreter : ITermInterpreter
     {
         /// <summary>
         /// Текст регулярного выражения, для определения слагаемого.
         /// </summary>
-        string RegexText { get; }
+        public string RegexText => throw new NotImplementedException();
 
         /// <summary>
         /// Интерпретация текста слагаемого в структуру.
         /// </summary>
         /// <param name="termText">Текст слагаемого.</param>
         /// <returns>Полученная из текста структура.</returns>
-        Term Interpret(string termText);
+        public Term Interpret(string termText)
+        {
+            throw new 
+            throw new NotImplementedException();
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace UnitTestProject
         [InlineData("x +1= 0", 2, 1)]
         [InlineData(" x+ y+z = 12 ", 3, 1)]
         [InlineData("  1 = 12+x +  y", 1, 3)]
+        [InlineData("b - c = a-b", 2, 2)]
         public void Interpret(string expressionText, byte leftTermCount, byte rightTermCount)
         {
             var sumExpressionInterpreter = new SumExpressionInterpreter(new TestTermInterpreter());

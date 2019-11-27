@@ -58,7 +58,7 @@ namespace SumInterpreter
                     }
                     catch (IncorrectTermException)
                     {
-                        errors.Add($"Слагаемое номер {i} \"{termMatches[i].Value}\" {sideName} имеет некорректный вид.");
+                        errors.Add($"Слагаемое номер {i + 1} \"{termMatches[i].Value}\" {sideName} имеет некорректный вид.");
                     }
             }
             return result.ToArray();

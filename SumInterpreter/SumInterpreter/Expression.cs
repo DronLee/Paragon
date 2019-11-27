@@ -39,7 +39,7 @@ namespace SumInterpreter
                     result.Append(term.Multiplier < 0 ? _minusSeparator : _plusSeparator);
 
                 var absMultiplier = Math.Abs(term.Multiplier);
-                if (absMultiplier != 1)
+                if (absMultiplier != 1 || term.Variable == null)
                     result.Append(absMultiplier.ToString().Replace(
                         CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, _decimalSeparator));
 
@@ -48,6 +48,10 @@ namespace SumInterpreter
                 if (term.Power != 1)
                     result.Append(_powerPrefix).Append(term.Power);
             }
+
+            if (result.Length == 0) // Если получилось такое, что слагаемые взаимоуничтожились.
+                result.Append("0");
+
             result.Append(_normalizedRightPart);
             return result.ToString();
         }
